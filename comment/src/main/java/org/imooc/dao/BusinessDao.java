@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.imooc.bean.Business;
 
 public interface BusinessDao {
@@ -53,4 +52,11 @@ public interface BusinessDao {
      * @return 影响条数；
      */
     int delete(Long id);
+
+    /**
+     * 根据id删除
+     * @param  business 商户信息；
+     * @return 影响条数；
+     */
+    int update(Business business);
 }

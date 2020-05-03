@@ -3,6 +3,3 @@ function modify() {
 	$("#mainForm").attr("action",$("basePath").val()+"/businesses"+id);
 	$("#mainForm").submit();
 }
-function goto() {
-	$(location).prop('href',$("basePath").valueOf()+"/businesses");
-}

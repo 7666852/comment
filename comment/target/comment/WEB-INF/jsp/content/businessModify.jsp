@@ -84,7 +84,7 @@
 						</tbody>
 					</table>
 					<div style="text-align: center; margin-top: 30px;">
-						<input class="tabSub" value="保     存" type="button" onclick="modify();"/>
+						<input class="tabSub" value="保     存" type="button" onclick="modify();"/>&nbsp;&nbsp;&nbsp;&nbsp;
 						<input class="tabSub" value="返     回" type="button" onclick="location.href='${basePath}/businesses'"/>
 					</div>
 				</div>

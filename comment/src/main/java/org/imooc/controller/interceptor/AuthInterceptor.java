@@ -19,7 +19,7 @@ public class AuthInterceptor implements HandlerInterceptor {
 		if (CommonUtil.contains(request.getSession(), request.getServletPath(), request.getMethod())) {
 			return true;
 		}
-//		 针对ajax请求处理
+		// 针对ajax请求处理
 		if (request.getHeader("x-requested-with") != null) {
 			String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
 			response.setHeader("url", basePath + "/login/noAuth");

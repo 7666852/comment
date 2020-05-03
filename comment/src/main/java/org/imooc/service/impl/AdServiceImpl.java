@@ -47,11 +47,10 @@ public class AdServiceImpl implements AdService {
 				adDao.insert(ad);
 				return true;
 			} catch (IllegalStateException | IOException e) {
-				// 图片添加失败ADSImpl
+				// TODO 需要添加日志
 				return false;
 			}
 		} else {
-			//图片为空或路径不存在
 			return false;
 		}
 	}
@@ -89,7 +88,7 @@ public class AdServiceImpl implements AdService {
 				fileName = FileUtil.save(adDto.getImgFile(), adImageSavePath);
 				ad.setImgFileName(fileName);
 			} catch (IllegalStateException | IOException e) {
-				System.out.println("图片添加失败");
+				// TODO 需要添加日志
 				return false;
 			}
 		}
@@ -98,7 +97,7 @@ public class AdServiceImpl implements AdService {
 			return false;
 		}
 		if (fileName != null) {
-			FileUtil.delete(adImageSavePath + adDto.getImgFileName());
+			return FileUtil.delete(adImageSavePath + adDto.getImgFileName());
 		}
 		return true;
 	}

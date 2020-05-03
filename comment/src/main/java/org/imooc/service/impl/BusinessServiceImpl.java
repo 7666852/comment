@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.imooc.bean.Ad;
 import org.imooc.bean.Business;
 import org.imooc.bean.Page;
 import org.imooc.constant.CategoryConst;
@@ -59,8 +60,6 @@ public class BusinessServiceImpl implements BusinessService {
 		return result;
 	}
 
-
-
 	@Override
 	public BusinessListDto searchByPageForApi(BusinessDto businessDto) {
 		BusinessListDto result = new BusinessListDto();
@@ -103,6 +102,37 @@ public class BusinessServiceImpl implements BusinessService {
 		return result;
 	}
 
+	@Override
+	public boolean remove(Long id) {
+		Business business = businessDao.selectById(id);
+		int delectRows=businessDao.delete(id);
+		FileUtil.delete(savePath+business.getImgFileName());
+		return delectRows==1;
+	}
+
+	@Override
+	public boolean modify(BusinessDto businessDto) {
+		Business business = new Business();
+		BeanUtils.copyProperties(businessDto, business);
+		String fileName = null;
+		if (businessDto.getImgFile() != null && businessDto.getImgFile().getSize() > 0) {
+			try {
+				fileName = FileUtil.save(businessDto.getImgFile(), savePath);
+				business.setImgFileName(fileName);
+			} catch (IllegalStateException | IOException e) {
+				System.out.println("修改图片失败");
+				return false;
+			}
+		}
+		int updateCount = businessDao.update(business);
+		if (updateCount != 1) {
+			return false;
+		}
+		if (fileName != null) {
+			return FileUtil.delete(savePath + businessDto.getImgFileName());
+		}
+		return true;
+	}
 
 	@Override
 	public boolean add(BusinessDto businessDto) {
@@ -136,12 +166,5 @@ public class BusinessServiceImpl implements BusinessService {
 		} else {
 			return 0;
 		}
-	}
-	@Override
-	public boolean remove(Long id){
-		Business business = businessDao.selectById(id);
-		int delectRows=businessDao.delete(id);
-		FileUtil.delete(savePath+business.getImgFileName());
-		return delectRows==1;
 	}
 }

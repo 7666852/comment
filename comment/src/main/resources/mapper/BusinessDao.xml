@@ -106,4 +106,44 @@
 	<delete id="delete">
 		delete from business where id=#{_parameter}
 	</delete>
+
+	<update id="update">
+		update business
+		<set>
+			<if test="imgFileName != null">
+				img_file_name = #{imgFileName},
+			</if>
+			<if test="title != null">
+				title = #{title},
+			</if>
+			<if test="subtitle != null">
+				subtitle = #{subtitle},
+			</if>
+			<if test="price != null">
+				price = #{price},
+			</if>
+			<if test="distance != null">
+				distance = #{distance},
+			</if>
+			<if test="number != null">
+				number = #{number},
+			</if>
+			<if test="`desc` != null">
+				`desc` = #{desc},
+			</if>
+			<if test="city != null">
+				city = #{city},
+			</if>
+			<if test="category != null">
+				category = #{category},
+			</if>
+			<if test="starTotalNum != null">
+				star_total_num = #{starTotalNum},
+			</if>
+			<if test="commentTotalNum != null">
+				comment_total_num = #{commentTotalNum},
+			</if>
+		</set>
+		where id=#{id}
+	</update>
 </mapper>

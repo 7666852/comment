@@ -27,7 +27,7 @@ public class BusinessesController {
 	/**
 	 * 商户列表
 	 */
-	@RequestMapping
+	@RequestMapping(method = RequestMethod.GET)
 	public String search(Model model, BusinessDto dto) {
 		model.addAttribute("list", businessService.searchByPage(dto));
 		model.addAttribute("searchParam", dto);
@@ -37,7 +37,7 @@ public class BusinessesController {
 	/**
 	 * 删除商户
 	 */
-	@RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public String remove(@PathVariable("id") Long id,Model model) {
 		if(businessService.remove(id)) {
 			model.addAttribute(PageCodeEnum.KEY, PageCodeEnum.REMOVE_SUCCESS);
@@ -60,7 +60,7 @@ public class BusinessesController {
 	/**
 	 * 商户新增
 	 */
-	@RequestMapping(value="/add")
+	@RequestMapping(method = RequestMethod.POST)
 	public String add(BusinessDto dto,RedirectAttributes attr) {
 		if(businessService.add(dto)) {
 			attr.addAttribute(PageCodeEnum.KEY, PageCodeEnum.ADD_SUCCESS);
@@ -74,8 +74,8 @@ public class BusinessesController {
 	/**
 	 * 商户修改页初始化
 	 */
-	@RequestMapping(value = "/{id}",method = RequestMethod.GET)
-	public String modifyInit(Model model,@PathVariable("id") Long id) {
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public String modifyInit(Model model, @PathVariable("id") Long id) {
 		model.addAttribute("cityList", dicService.getListByType(DicTypeConst.CITY));
 		model.addAttribute("categoryList", dicService.getListByType(DicTypeConst.CATEGORY));
 		model.addAttribute("modifyObj", businessService.getById(id));
@@ -86,7 +86,10 @@ public class BusinessesController {
 	 * 商户修改
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public String modify(@PathVariable("id")Long id,BusinessDto dto) {
+	public String modify(@PathVariable("id") Long id, BusinessDto dto) {
+		if (businessService.modify(dto)){
+
+		}
 		System.out.println(id);
 		return "/content/businessModify";
 	}
