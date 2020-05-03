@@ -1,0 +1,3 @@
+function busadd() {
+		$("#mainForm").submit();
+}
