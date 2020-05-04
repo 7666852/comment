@@ -36,7 +36,7 @@
 		                    <input class="button hide" type="button" id="submit_login" value="登录" />
 		                </div>
 		            </fieldset>
-		        </form>
+				</form>
 		    </div>
 		</div>
 	</body>

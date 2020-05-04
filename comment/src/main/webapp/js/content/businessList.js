@@ -1,5 +1,5 @@
 $(function() {
-    common.showMessage($("#message").val());
+	common.showMessage($("#message").val());
 });
 
 function remove(id) {
@@ -14,7 +14,7 @@ function search() {
 	$("#mainForm").attr("action",$("#basePath").val() + "/businesses");
 	$("#mainForm").submit();
 }
-
 function modifyInit(id) {
-	location.href = $("#basePath").val() + "/businesses/" + id;
+    location.href = $("#basePath").val() + "/businesses/" + id;
 }
+

@@ -8,6 +8,7 @@ import org.imooc.dto.GroupDto;
 import org.imooc.dto.UserDto;
 import org.imooc.service.GroupService;
 import org.imooc.service.UserService;
+import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -65,6 +66,7 @@ public class LoginController {
 			GroupDto groupDto = groupService.getByIdWithMenuAction(userDto.getGroupId());
 			session.setAttribute(SessionKeyConst.MENU_INFO,groupDto.getMenuDtoList());
 			session.setAttribute(SessionKeyConst.ACTION_INFO, groupDto.getActionDtoList());
+			session.setAttribute("ChName",userDto.getChName());
 			return "redirect:/index";
 		}
 		attr.addFlashAttribute(PageCodeEnum.KEY, PageCodeEnum.LOGIN_FAIL);

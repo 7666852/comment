@@ -37,7 +37,7 @@ public class BusinessesController {
 	/**
 	 * 删除商户
 	 */
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
 	public String remove(@PathVariable("id") Long id,Model model) {
 		if(businessService.remove(id)) {
 			model.addAttribute(PageCodeEnum.KEY, PageCodeEnum.REMOVE_SUCCESS);
@@ -74,8 +74,8 @@ public class BusinessesController {
 	/**
 	 * 商户修改页初始化
 	 */
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public String modifyInit(Model model, @PathVariable("id") Long id) {
+	@RequestMapping(value = "/{id}",method = RequestMethod.GET)
+	public String modifyInit(Model model,@PathVariable("id") Long id) {
 		model.addAttribute("cityList", dicService.getListByType(DicTypeConst.CITY));
 		model.addAttribute("categoryList", dicService.getListByType(DicTypeConst.CATEGORY));
 		model.addAttribute("modifyObj", businessService.getById(id));
@@ -86,11 +86,12 @@ public class BusinessesController {
 	 * 商户修改
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public String modify(@PathVariable("id") Long id, BusinessDto dto) {
-		if (businessService.modify(dto)){
-
-		}
-		System.out.println(id);
-		return "/content/businessModify";
+	public String modify(Model model,BusinessDto dto) {
+        if (businessService.modify(dto)){
+            model.addAttribute(PageCodeEnum.KEY, PageCodeEnum.MODIFY_SUCCESS);
+        } else {
+            model.addAttribute(PageCodeEnum.KEY, PageCodeEnum.MODIFY_FAIL);
+        }
+		return "redirect:/businesses";
 	}
 }

@@ -2,6 +2,7 @@ package org.imooc.service;
 
 import java.util.List;
 
+import org.imooc.dao.BusinessDao;
 import org.imooc.dto.BusinessDto;
 import org.imooc.dto.BusinessListDto;
 
@@ -27,7 +28,13 @@ public interface BusinessService {
      * @return 商户列表
      */
     List<BusinessDto> searchByPage(BusinessDto businessDto);
-    
+
+    /**
+     * 删除商户功能
+     * @param id
+     * @return ture 删除成功 false删除失败；
+     */
+    boolean remove(Long id);
     /**
      * 分页搜索商户列表(接口专用)
      * @param businessDto 查询条件(包含分页对象)
@@ -36,16 +43,10 @@ public interface BusinessService {
     BusinessListDto searchByPageForApi(BusinessDto businessDto);
 
     /**
-     * 删除商户功能
-     * @param id
-     * @return ture 删除成功 false删除失败；
-     */
-    boolean remove(Long id);
-
-    /**
      * 修改商户功能
      * @param businessDto
      * @return ture 删除成功 false删除失败；
      */
     boolean modify(BusinessDto businessDto);
+
 }

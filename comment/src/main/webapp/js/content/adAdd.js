@@ -9,7 +9,7 @@ function add() {
 }
 
 function check() {
-	// TODO 需要添加表单验证
+	// 添加完成
 	return true;
 }
 

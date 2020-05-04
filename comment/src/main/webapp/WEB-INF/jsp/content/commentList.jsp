@@ -4,16 +4,17 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
 		<title></title>
-		<link rel="stylesheet" type="text/css" href="http://127.0.0.1:8081/comment/css/all.css">
-		<link rel="stylesheet" type="text/css" href="http://127.0.0.1:8081/comment/css/pop.css">
-		<link rel="stylesheet" type="text/css" href="http://127.0.0.1:8081/comment/css/main.css">
-		<script type="text/javascript" src="http://127.0.0.1:8081/comment/js/common/jquery-1.8.3.js"></script>
-		<script type="text/javascript" src="http://127.0.0.1:8081/comment/js/content/adList.js"></script>
+		<link rel="stylesheet" type="text/css" href="${basePath}/css/all.css"/>
+		<link rel="stylesheet" type="text/css" href="${basePath}/css/pop.css"/>
+		<link rel="stylesheet" type="text/css" href="${basePath}/css/main.css"/>
+		<script type="text/javascript" src="${basePath}/js/common/jquery-1.8.3.js"></script>
+		<script type="text/javascript" src="${basePath}/js/common/common.js"></script>
+		<script type="text/javascript" src="${basePath}/js/content/adList.js"></script>
 	</head>
 	<body style="background: #e1e9eb;">
-		<form action="http://127.0.0.1:8081/comment/ad/search" id="mainForm" method="post">
+		<form action="${basepath}/comment/ad/search" id="mainForm" method="post">
 			<input id="id" name="id" type="hidden">
-			<input id="basePath" value="http://127.0.0.1:8081/comment" type="hidden">
+			<input id="basePath" value="${basePath}" type="hidden">
 			<input name="page.currentPage" id="currentPage" value="1" type="hidden">
 			<div class="right">
 				<div class="current">当前位置：<a href="#">内容管理</a> &gt; 评论查询</div>
@@ -52,7 +53,7 @@
 						</table>
 						
 						<!-- 分页 -->
-						
+						<t:page jsMethodName="search" page="${searchParam.page}"></t:page>
 
 
 
@@ -66,15 +67,15 @@
 	}
 </script>
 
-<div class="page fix">
-	<a href="javascript:transCurrentPage('1');" class="first">首页</a>
-	<a href="javascript:transCurrentPage('0');" class="pre">上一页</a>
-	当前第<span>1/1</span>页
-	<a href="javascript:transCurrentPage('2');" class="next">下一页</a>
-	<a href="javascript:transCurrentPage('1');" class="last">末页</a>
-	跳至 &nbsp;<input id="currentPageText" value="1" class="allInput w28" type="text">&nbsp;页 &nbsp;
-	<a href="javascript:transCurrentPage($('#currentPageText').val());" class="go">GO</a>
-</div>
+<%--<div class="page fix">--%>
+<%--	<a href="javascript:transCurrentPage('1');" class="first">首页</a>--%>
+<%--	<a href="javascript:transCurrentPage('0');" class="pre">上一页</a>--%>
+<%--	当前第<span>1/1</span>页--%>
+<%--	<a href="javascript:transCurrentPage('2');" class="next">下一页</a>--%>
+<%--	<a href="javascript:transCurrentPage('1');" class="last">末页</a>--%>
+<%--	跳至 &nbsp;<input id="currentPageText" value="1" class="allInput w28" type="text">&nbsp;页 &nbsp;--%>
+<%--	<a href="javascript:transCurrentPage($('#currentPageText').val());" class="go">GO</a>--%>
+<%--</div>--%>
 					</div>
 				</div>
 			</div>

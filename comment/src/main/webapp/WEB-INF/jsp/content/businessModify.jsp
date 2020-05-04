@@ -18,8 +18,8 @@
 	</head>
 	<body style="background: #e1e9eb;">
 		<form id="mainForm" method="post" action="${basePath}/businesses/${modifyObj.id}" enctype="multipart/form-data">
+            <input type="hidden" name="_method" value="PUT"/>
 			<input type="hidden" id="message" value="${pageCode.msg}"/>
-			<input type="hidden" name="_method" value="PUT"/>
 			<div class="right">
 				<div class="current">当前位置：<a href="###">内容管理</a> &gt; 商户管理</div>
 				<div class="rightCont">
@@ -84,7 +84,7 @@
 						</tbody>
 					</table>
 					<div style="text-align: center; margin-top: 30px;">
-						<input class="tabSub" value="保     存" type="button" onclick="modify();"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input class="tabSub" value="保     存" type="button" onclick="modify();"/>
 						<input class="tabSub" value="返     回" type="button" onclick="location.href='${basePath}/businesses'"/>
 					</div>
 				</div>
